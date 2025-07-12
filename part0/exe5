@@ -1,0 +1,19 @@
+sequenceDiagram
+    participant Browser
+    participant Server
+
+    Browser->>Server: GET /exampleapp/spa
+    Server-->>Browser: 200 OK (HTML page)
+
+    Browser->>Server: GET /exampleapp/main.css
+    Server-->>Browser: 200 OK (CSS)
+
+    Browser->>Server: GET /exampleapp/spa.js
+    Server-->>Browser: 200 OK (JS)
+
+    Browser->>Server: GET /exampleapp/data.json
+    Note right of Server: Triggered via XHR (JS)
+    Server-->>Browser: 200 OK (JSON)
+
+    Browser->>Server: GET /exampleapp/favicon.ico
+    Server-->>Browser: 404 Not Found

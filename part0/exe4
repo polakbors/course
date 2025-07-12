@@ -1,0 +1,25 @@
+sequenceDiagram
+    participant Browser
+    participant Server
+
+    Browser->>Server: POST /exampleapp/new_note
+    activate Server
+    Server-->>Browser: 302 Found (redirect to /exampleapp/notes)
+    deactivate Server
+
+    Browser->>Server: GET /exampleapp/notes
+    activate Server
+    Server-->>Browser: 200 OK (HTML page)
+    deactivate Server
+
+    Browser->>Server: GET /exampleapp/main.css
+    Server-->>Browser: 200 OK (CSS)
+
+    Browser->>Server: GET /exampleapp/main.js
+    Server-->>Browser: 200 OK (JS)
+
+    Browser->>Server: GET /exampleapp/data.json
+    Server-->>Browser: 200 OK (JSON notes)
+
+    Browser->>Server: GET /exampleapp/favicon.ico
+    Server-->>Browser: 404 Not Found

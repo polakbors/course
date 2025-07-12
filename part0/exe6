@@ -1,0 +1,24 @@
+sequenceDiagram
+    participant Browser
+    participant Server
+
+    Browser->>Server: GET /exampleapp/spa
+    Server-->>Browser: 200 OK (HTML)
+
+    Browser->>Server: GET /exampleapp/main.css
+    Server-->>Browser: 200 OK (CSS)
+
+    Browser->>Server: GET /exampleapp/spa.js
+    Server-->>Browser: 200 OK (JS)
+
+    Note over Browser: JavaScript (spa.js) executes
+
+    Browser->>Server: GET /exampleapp/data.json
+    Note right of Server: Triggered at spa.js:31
+    Server-->>Browser: 200 OK (JSON notes)
+
+    Note over Browser: User submits new note (no reload)
+
+    Browser->>Server: POST /exampleapp/new_note_spa
+    Note right of Server: Triggered at spa.js:43
+    Server-->>Browser: 201 Created
